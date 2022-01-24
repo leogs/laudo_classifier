@@ -12,6 +12,8 @@ RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt
 
 COPY ./src /app/src
+COPY ./models /app/models
 
-# Run the streamlit on container startup
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+#Runs a single unvicorn process so we can handle replication at the cluster level
+#Otherwise we can use gunicorn as a process manager
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
