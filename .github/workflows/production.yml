@@ -28,3 +28,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2.8.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: |
+            jardesonbarbosa/classifier-laudos:latest
+            jardesonbarbosa/classifier-laudos:v1.5${{ github.run_number }}
