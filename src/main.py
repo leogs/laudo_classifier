@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {'Hello': 'World'}
+    return {'Classifier': 'Laudos'}
 
 # async def get_prediction(doc, pipeline):
 #     dict_result = {}
