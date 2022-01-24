@@ -35,5 +35,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            jardesonbarbosa/classifier-laudos:latest
-            jardesonbarbosa/classifier-laudos:v1.5${{ github.run_number }}
+            jardesonbarbosa/laudo-classifier:latest
+            jardesonbarbosa/laudo-classifier:v1.4${{ github.run_number }}
