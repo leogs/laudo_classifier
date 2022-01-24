@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: classifier
-          image: jardesonbarbosa/laudo-classifier:v1.3
+          image: jardesonbarbosa/laudo-classifier:latest
           ports:
             - containerPort: 80
 
@@ -31,4 +31,4 @@ spec:
     - protocol: TCP
       port: 80
       nodePort: 30000
-  type: NodePort
+  type: LoadBalancer

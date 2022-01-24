@@ -12,18 +12,18 @@ app = FastAPI()
 def home():
     return {'Hello': 'World'}
 
-async def get_prediction(doc, pipeline):
-    dict_result = {}
-    y_pred = pipeline.predict_proba([doc])[0]
-    y_pred_class = pipeline.predict([doc])[0]
-    for target, prob in zip(pipeline.classes_, y_pred):
-        dict_result[target] = prob
-    return y_pred_class, dict_result[y_pred_class]
+# async def get_prediction(doc, pipeline):
+#     dict_result = {}
+#     y_pred = pipeline.predict_proba([doc])[0]
+#     y_pred_class = pipeline.predict([doc])[0]
+#     for target, prob in zip(pipeline.classes_, y_pred):
+#         dict_result[target] = prob
+#     return y_pred_class, dict_result[y_pred_class]
 
 @app.post('/predict')
 async def predict_laudos(laudo: Laudo):
     data = laudo.dict()
-    prediction_class, probability = await get_prediction(data['texto'], classifier.model)
+    prediction_class, probability = await classifier.get_prediction(data['texto'])
 
     return{
         'prediction': prediction_class,
