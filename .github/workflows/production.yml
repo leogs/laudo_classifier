@@ -50,3 +50,10 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
+          
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1.5
+        with:
+          image: jardesonbarbosa/laudo-classifier:latest
+          manifests: |
+            ./deployment.yaml
